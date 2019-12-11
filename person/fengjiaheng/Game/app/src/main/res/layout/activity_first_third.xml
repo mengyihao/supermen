@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/layout2"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="50dp">
+
+            <Button
+                android:id="@+id/btnLeftMove"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/left"
+                />
+
+            <Button
+                android:id="@+id/btnRightMove"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/right"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp">
+
+            <Button
+                android:id="@+id/btnSprint"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="180dp"
+                android:background="@drawable/dongtu"/>
+
+            <Button
+                android:id="@+id/btnFight"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/attack"/>
+
+            <Button
+                android:id="@+id/btnJump"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/jump"
+                />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_above="@id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <Button
+                android:layout_marginRight="20dp"
+                android:id="@+id/btn_music"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/musicoff" />
+            <ImageButton
+                android:id="@+id/iv_settings"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/setting" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/dreamerHp1"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/hp1"/>
+            <ImageView
+                android:id="@+id/dreamerHp2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/hp1"/>
+            <ImageView
+                android:id="@+id/dreamerHp3"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/hp1"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/dreamer"
+            android:layout_marginLeft="20dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:src="@drawable/a"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageView
+            android:id="@+id/monster"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="400dp"
+            android:src="@drawable/a"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
