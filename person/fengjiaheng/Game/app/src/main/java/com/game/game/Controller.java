@@ -455,7 +455,7 @@ public class Controller{
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1://向右移动
-                    final ValueAnimator animatorRight = ValueAnimator.ofFloat(dreamer.getDreamer().getX(),dreamer.getDreamer().getX()+30);
+                    final ValueAnimator animatorRight = ValueAnimator.ofFloat(dreamer.getDreamer().getX(),dreamer.getDreamer().getX()+50);
                     animatorRight.setDuration(400);
                     animatorRight.setInterpolator(new LinearInterpolator());
                     animatorRight.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -483,7 +483,7 @@ public class Controller{
                     animatorRight.start();
                     break;
                 case 2://向左移动
-                    final ValueAnimator animatorLeft = ValueAnimator.ofFloat(dreamer.getDreamer().getX(),dreamer.getDreamer().getX()-30);
+                    final ValueAnimator animatorLeft = ValueAnimator.ofFloat(dreamer.getDreamer().getX(),dreamer.getDreamer().getX()-50);
                     animatorLeft.setDuration(400);
                     animatorLeft.setInterpolator(new LinearInterpolator());
                     animatorLeft.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -560,7 +560,7 @@ public class Controller{
                     break;
                 case 4://跳跃
                     float dreamerY = dreamer.getDreamer().getY();
-                    final ValueAnimator animatorJump = ValueAnimator.ofFloat(dreamerY,dreamerY-500,dreamerY);
+                    final ValueAnimator animatorJump = ValueAnimator.ofFloat(dreamerY,dreamerY-400,dreamerY);
                     animatorJump.setDuration(500);
                     animatorJump.setInterpolator(new LinearInterpolator());
                     animatorJump.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -655,7 +655,7 @@ public class Controller{
 
                     //加载魔法动态图，之后销毁mofa;
                     GifLoadOneTimeGif gfls = new GifLoadOneTimeGif();
-                    gfls.loadOneTimeGif(mainContext,R.drawable.mofa0,mofa,1,new GifLoadOneTimeGif.GifListener(){
+                    gfls.loadOneTimeGif(mainContext,R.drawable.mofa2,mofa,1,new GifLoadOneTimeGif.GifListener(){
                         @Override
                         public void gifPlayComplete() {
                             if(monster.getMonsterHp()>0){

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.game.mainInterface.MainActivity;
 
 public class FirstInterfaceActivity extends AppCompatActivity{
     private RelativeLayout relativeLayout;

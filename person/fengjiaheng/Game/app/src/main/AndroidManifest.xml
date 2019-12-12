@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.game.game">
 
+    <!--运行录制音频权限-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!--悬浮框-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!--网络通信权限-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 打电话权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.game.mainInterface.MainActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -22,21 +32,33 @@
         <activity
             android:name=".FirstInterfaceActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".FirstSecondActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".FirstThirdActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"></activity>
 
-        </activity>
+        <activity android:name="com.game.mainInterface.FileActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="landscape"></activity>
+
+        <activity android:name="com.game.mainInterface.CreaterolesActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="landscape"></activity>
+
+        <activity android:name="com.game.mainInterface.PersonActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="landscape"></activity>
+
+        <activity android:name="com.game.mainInterface.ServiceActivity"></activity>
+
+        <activity android:name="com.game.mainInterface.ChooseActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="landscape"></activity>
 
     </application>
 

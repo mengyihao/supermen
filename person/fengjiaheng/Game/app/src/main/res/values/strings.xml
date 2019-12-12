@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Game</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <drawable name="color1">#339966</drawable>
+    <drawable name="color2">#fff</drawable>
 </resources>
