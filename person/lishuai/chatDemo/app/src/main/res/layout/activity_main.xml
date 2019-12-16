@@ -9,7 +9,7 @@
         tools:context=".MainActivity">
     <Button
             android:layout_width="wrap_content"
-            android:id="@+id/next"
+            android:id="@+id/next1"
             android:text="next"
             android:layout_height="wrap_content"/>
 
