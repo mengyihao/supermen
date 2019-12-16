@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="miner" type="id"/>
+    <item name="magic" type="id"/>
+    <item name="shoot" type="id" />
+    <item name="skill1" type="id" />
+    <item name="skill2" type="id" />
+    <item name="skill3" type="id" />
+    <item name="skill4" type="id" />
+    <item name="skill5" type="id" />
+</resources>
