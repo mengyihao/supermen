@@ -3,15 +3,11 @@ package com.example.a1150643534.myapplication;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
     private Button next;
     private int where=0;
     private CustomOnclickListener listener;
-    private CustomOnclickListener1 listener1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         next = findViewById(R.id.next1);
         listener = new CustomOnclickListener();
         chatList = new ArrayList<>();
@@ -129,12 +125,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.next1:
                     if (chatList != null) {
                         if (chatList.get(where).getType() == 0) {
-                            listener1 = new CustomOnclickListener1();
 //                        RelativeLayout.LayoutParams llpp = new RelativeLayout.LayoutParams(80, 80);
                             final Dialog dialog = new Dialog(MainActivity.this, NormalDialogStyle);
                             View view = View.inflate(MainActivity.this, R.layout.layout, null);
                             TextView chatPlace =  view.findViewById(R.id.textPlace);
-                            Button next1 = view.findViewById(R.id.next);
+                            final Button next1 = view.findViewById(R.id.next);
                             dialog.setContentView(view);
                             dialog.setCanceledOnTouchOutside(false);
                             view.setMinimumHeight((int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
@@ -149,10 +144,16 @@ public class MainActivity extends AppCompatActivity {
                             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
                             lp.gravity = Gravity.TOP;
                             dialogWindow.setAttributes(lp);
-                            next1.setOnClickListener(listener1);
+                            next1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                    where++;
+                                    onclick();
+                                }
+                            });
                             dialog.show();
                         } else if (chatList.get(where).getType() == 1) {
-                            listener1 = new CustomOnclickListener1();
                             final Dialog dialog1 = new Dialog(MainActivity.this, R.style.NormalDialogStyle);
                             View view1 = View.inflate(MainActivity.this, R.layout.layout, null);
                             dialog1.setContentView(view1);
@@ -171,76 +172,12 @@ public class MainActivity extends AppCompatActivity {
                             lp1.gravity = Gravity.BOTTOM;
                             dialogWindow1.setAttributes(lp1);
                             Button next1 = view1.findViewById(R.id.next);
-                            next1.setOnClickListener(listener1);
-
-                            dialog1.show();
-                        }else
-                            where++;
-                    }
-                    break;
-
-            }
-        }
-    }
-    class CustomOnclickListener1 implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.next:
-                    dismissDialog(R.id.next);
-                    if (chatList != null) {
-                        if (chatList.get(where).getType() == 0) {
-//                        RelativeLayout.LayoutParams llpp = new RelativeLayout.LayoutParams(80, 80);
-                            final Dialog dialog = new Dialog(MainActivity.this, NormalDialogStyle);
-                            View view = View.inflate(MainActivity.this, R.layout.layout, null);
-                            TextView chatPlace =  view.findViewById(R.id.textPlace);
-                            Button next1 = view.findViewById(R.id.next);
-                            dialog.setContentView(view);
-                            dialog.setCanceledOnTouchOutside(false);
-                            view.setMinimumHeight((int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
-                            dialog.setCancelable(true);
-//                        LinearLayout.LayoutParams llpp1 = new LinearLayout.LayoutParams(ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth(), (int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
-                            Window dialogWindow = dialog.getWindow();
-                            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-                            lp.width = ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth();
-//                        TextView chatPlace = new TextView(MainActivity.this);
-//                        dialog.addContentView(chatPlace, llpp);
-                            chatPlace.setText(chatList.get(where).getChatList());
-                            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                            lp.gravity = Gravity.TOP;
-                            dialogWindow.setAttributes(lp);
-                            next1.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    dialog.dismiss();
-                                    where++;
-                                }
-                            });
-                            dialog.show();
-                        } else if (chatList.get(where).getType() == 1) {
-                            final Dialog dialog1 = new Dialog(MainActivity.this, R.style.NormalDialogStyle);
-                            View view1 = View.inflate(MainActivity.this, R.layout.layout, null);
-                            dialog1.setContentView(view1);
-                            dialog1.setCanceledOnTouchOutside(false);
-                            view1.setMinimumHeight((int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
-//                        RelativeLayout.LayoutParams llpp = new RelativeLayout.LayoutParams(ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth(), (int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
-                            Window dialogWindow1 = dialog1.getWindow();
-                            WindowManager.LayoutParams lp1 = dialogWindow1.getAttributes();
-                            lp1.width = ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth();
-                            lp1.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                            TextView chatPlace =  view1.findViewById(R.id.textPlace);
-//                        TextView chatPlace = new TextView(MainActivity.this);
-//                        dialog1.addContentView(chatPlace, llpp);
-                            chatPlace.setText(chatList.get(where).getChatList());
-                            lp1.gravity = Gravity.BOTTOM;
-                            dialogWindow1.setAttributes(lp1);
-                            Button next1 = view1.findViewById(R.id.next);
                             next1.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     dialog1.dismiss();
                                     where++;
+                                    onclick();
                                 }
                             });
 
@@ -253,6 +190,70 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    private void onclick(){
+         if (chatList != null) {
+            if (chatList.get(where).getType() == 0) {
+//                        RelativeLayout.LayoutParams llpp = new RelativeLayout.LayoutParams(80, 80);
+                final Dialog dialog = new Dialog(MainActivity.this, NormalDialogStyle);
+                View view = View.inflate(MainActivity.this, R.layout.layout, null);
+                TextView chatPlace =  view.findViewById(R.id.textPlace);
+                Button next1 = view.findViewById(R.id.next);
+                dialog.setContentView(view);
+                dialog.setCanceledOnTouchOutside(false);
+                view.setMinimumHeight((int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
+                dialog.setCancelable(true);
+//                        LinearLayout.LayoutParams llpp1 = new LinearLayout.LayoutParams(ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth(), (int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
+                Window dialogWindow = dialog.getWindow();
+                WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+                lp.width = ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth();
+//                        TextView chatPlace = new TextView(MainActivity.this);
+//                        dialog.addContentView(chatPlace, llpp);
+                chatPlace.setText(chatList.get(where).getChatList());
+                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                lp.gravity = Gravity.TOP;
+                dialogWindow.setAttributes(lp);
+                next1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        where++;
+                        onclick();
+                    }
+                });
+                dialog.show();
+            } else if (chatList.get(where).getType() == 1) {
+                final Dialog dialog1 = new Dialog(MainActivity.this, R.style.NormalDialogStyle);
+                View view1 = View.inflate(MainActivity.this, R.layout.layout, null);
+                dialog1.setContentView(view1);
+                dialog1.setCanceledOnTouchOutside(false);
+                view1.setMinimumHeight((int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
+//                        RelativeLayout.LayoutParams llpp = new RelativeLayout.LayoutParams(ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth(), (int) (ScreenSizeUtils.getInstance(MainActivity.this).getScreenHeight() * 0.23f));
+                Window dialogWindow1 = dialog1.getWindow();
+                WindowManager.LayoutParams lp1 = dialogWindow1.getAttributes();
+                lp1.width = ScreenSizeUtils.getInstance(MainActivity.this).getScreenWidth();
+                lp1.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                TextView chatPlace =  view1.findViewById(R.id.textPlace);
+//                        TextView chatPlace = new TextView(MainActivity.this);
+//                        dialog1.addContentView(chatPlace, llpp);
+                chatPlace.setText(chatList.get(where).getChatList());
+                lp1.gravity = Gravity.BOTTOM;
+                dialogWindow1.setAttributes(lp1);
+                Button next1 = view1.findViewById(R.id.next);
+                next1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog1.dismiss();
+                        where++;
+                        onclick();
+                    }
+                });
+
+                dialog1.show();
+            }else
+                where++;
+        }
+    }
+
 
     /**
      * 自定义对话框
