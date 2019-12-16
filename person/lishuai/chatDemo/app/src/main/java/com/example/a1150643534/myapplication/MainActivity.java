@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void onclick(){
-         if (chatList != null) {
+         if (chatList != null&&chatList.size()>where) {
             if (chatList.get(where).getType() == 0) {
 //                        RelativeLayout.LayoutParams llpp = new RelativeLayout.LayoutParams(80, 80);
                 final Dialog dialog = new Dialog(MainActivity.this, NormalDialogStyle);
@@ -251,7 +251,9 @@ public class MainActivity extends AppCompatActivity {
                 dialog1.show();
             }else
                 where++;
-        }
+        }else {
+             where=0;
+         }
     }
 
 
