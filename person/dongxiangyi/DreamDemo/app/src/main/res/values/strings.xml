@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DreamDemo</string>
+    <drawable name="color1">#339966</drawable>
+    <drawable name="color2">#fff</drawable>
+</resources>

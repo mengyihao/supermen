@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="630dp">
+
+            <Button
+                android:id="@+id/btn_music"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:background="@mipmap/pause" />
+
+            <ImageView
+                android:id="@+id/iv_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/setting" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+    android:id="@+id/btn_chapter1"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:drawableRight="@mipmap/zhan"
+    android:text="第一章：涿鹿之战"
+    android:textSize="30sp" />
+    <Button
+        android:id="@+id/btn_chapter2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/zhanguoqixiong"
+        android:text="第二章：七雄争霸"
+        android:textSize="30sp" />
+    <Button
+        android:id="@+id/btn_chapter3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/sanguo"
+        android:text="第三章：三国鼎立"
+        android:textSize="30sp" />
+
+</LinearLayout>
