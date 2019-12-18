@@ -17,19 +17,24 @@ import java.io.FileReader;
 
 public class MainActivity extends AppCompatActivity {
 
+    //四个按钮
     private Button button1;
     private Button button2;
     private Button button3;
     private Button button4;
+    //已解锁的关数
     private int level = 3;
+    //最大关数
     private int maxLevel = 4;
+    //最小关数
     private int minLevel = 1;
-    private String[] levelList = {"1","2","3","4","5","6","7","8","9"};
-
+    //关数min-max
+    private String[] levelList = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    //sd卡权限
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             "android.permission.READ_EXTERNAL_STORAGE",
-            "android.permission.WRITE_EXTERNAL_STORAGE" };
+            "android.permission.WRITE_EXTERNAL_STORAGE"};
 
     private String DEFAULT_FILENAME = "level.txt";
 
@@ -44,11 +49,12 @@ public class MainActivity extends AppCompatActivity {
         button4 = findViewById(R.id.button4);
 
 
+        //点击跳转到关卡
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this,Main2Activity.class);
+                intent.setClass(MainActivity.this, Main2Activity.class);
                 startActivity(intent);
             }
         });
@@ -60,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
 //        button3.setBackgroundResource(R.drawable.lock);
 //        button4.setClickable(false);
 //        button4.setBackgroundResource(R.drawable.lock);
-
-
 
 
 //        if(level==1){
@@ -92,11 +96,13 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
 
+        //设置关卡按钮
         buttonSet();
     }
 
-    public void buttonSet(){
+    public void buttonSet() {
         verifyStoragePermissions(MainActivity.this);
+        //读取sd卡中的关卡信息
         try {
             File file = new File(Environment.getExternalStorageDirectory(),
                     DEFAULT_FILENAME);
@@ -109,24 +115,28 @@ public class MainActivity extends AppCompatActivity {
             }
             br.close();
             System.out.println("读取成功：" + sb.toString());
-            int i= 0;
-            while (sb.toString().equals(levelList[i])==false){
+            int i = 0;
+            while (sb.toString().equals(levelList[i]) == false&&levelList[i]!=null) {
                 i++;
             }
-            level=i+1;
+            if(i+1>=level) {
+                level = i + 1;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        Resources res=getResources();
-        for(int i = minLevel;i<=level;i++){
-            int id = res.getIdentifier("button"+i,"id",getPackageName());
+        //遍历已解锁关卡
+        Resources res = getResources();
+        for (int i = minLevel; i <= level; i++) {
+            int id = res.getIdentifier("button" + i, "id", getPackageName());
             findViewById(id).setBackground(getDrawable(R.drawable.empty));
             findViewById(id).setClickable(true);
         }
-        for(int i = level+1;i<=maxLevel;i++){
-            int id = res.getIdentifier("button"+i,"id",getPackageName());
+        //遍历未解锁关卡
+        for (int i = level + 1; i <= maxLevel; i++) {
+            int id = res.getIdentifier("button" + i, "id", getPackageName());
             findViewById(id).setBackground(getDrawable(R.drawable.lock));
             findViewById(id).setClickable(false);
         }
@@ -134,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    //权限检测与申请
     public static void verifyStoragePermissions(Activity activity) {
         try {
             //检测是否有写的权限
@@ -142,55 +152,56 @@ public class MainActivity extends AppCompatActivity {
                     "android.permission.WRITE_EXTERNAL_STORAGE");
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 // 没有写的权限，去申请写的权限，会弹出对话框
-                ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,REQUEST_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
-    /**
-     * 判断SDCard是否存在 [当没有外挂SD卡时，内置ROM也被识别为存在sd卡]
-     *
-     * @return
-     */
-    public static boolean isSdCardExist() {
-        return Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED);
-    }
-    /**
-     * 获取SD卡根目录路径
-     *
-     * @return
-     */
-    public static String getSdCardPath() {
-        boolean exist = isSdCardExist();
-        String sdpath = "";
-        if (exist) {
-            sdpath = Environment.getExternalStorageDirectory()
-                    .getAbsolutePath();
-        } else {
-            sdpath = "不适用";
-        }
-        return sdpath;
-
-    }
-
-    /**
-     * 获取默认的文件路径
-     *
-     * @return
-     */
-    public static String getDefaultFilePath() {
-        String filepath = "";
-        File file = new File(Environment.getExternalStorageDirectory(),
-                "abc.txt");
-        if (file.exists()) {
-            filepath = file.getAbsolutePath();
-        } else {
-            filepath = "不适用";
-        }
-        return filepath;
-    }
 }
+
+
+//    /**
+//     * 判断SDCard是否存在 [当没有外挂SD卡时，内置ROM也被识别为存在sd卡]
+//     *
+//     * @return
+//     */
+//    public static boolean isSdCardExist() {
+//        return Environment.getExternalStorageState().equals(
+//                Environment.MEDIA_MOUNTED);
+//    }
+//    /**
+//     * 获取SD卡根目录路径
+//     *
+//     * @return
+//     */
+//    public static String getSdCardPath() {
+//        boolean exist = isSdCardExist();
+//        String sdpath = "";
+//        if (exist) {
+//            sdpath = Environment.getExternalStorageDirectory()
+//                    .getAbsolutePath();
+//        } else {
+//            sdpath = "不适用";
+//        }
+//        return sdpath;
+//
+//    }
+//
+//    /**
+//     * 获取默认的文件路径
+//     *
+//     * @return
+//     */
+//    public static String getDefaultFilePath() {
+//        String filepath = "";
+//        File file = new File(Environment.getExternalStorageDirectory(),
+//                "abc.txt");
+//        if (file.exists()) {
+//            filepath = file.getAbsolutePath();
+//        } else {
+//            filepath = "不适用";
+//        }
+//        return filepath;
+//    }
+//}

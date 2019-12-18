@@ -35,6 +35,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         jumpBack = findViewById(R.id.jumpBack);
+        //点击返回
         jumpBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,12 +44,12 @@ public class Main2Activity extends AppCompatActivity {
                 try {
                     File file = new File(Environment.getExternalStorageDirectory(),
                             DEFAULT_FILENAME);
-                    if(file.exists()) {
-                        file.delete();
-                    }
+//                    if(file.exists()) {
+//                        file.delete();
+//                    }
                     //第二个参数意义是说是否以append方式添加内容
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-                    String info = "4";
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(file, false));
+                    String info = "2";
                     bw.write(info);
                     bw.flush();
                     System.out.println("写入成功");
